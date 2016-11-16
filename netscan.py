@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
-import sys, socket, time, os, netifaces, netaddr, nmap, pprint, re, subprocess, logging, threading, argparse
+import socket, time, os, netifaces, netaddr, nmap, pprint, re, subprocess, logging, argparse
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 from netaddr import *
-#from scapy.layers.inet import IP
 from portscan import TCP_connect, scan_ports
 
 global addr, netmask, cidr, allhosts
