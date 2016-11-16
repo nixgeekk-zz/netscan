@@ -22,13 +22,15 @@ def OpenFileLimit():
     
     ulimitmax = subprocess.getoutput('ulimit -Sn')
     nulimitmax = int(ulimitmax)
+
+
     if os.name.split()[0] == 'posix':
         if nulimitmax < 10000:
             print()
-            print('Setting open files too 10000..')
-            subprocess.getoutput('ulimit -Sn 10000')
+            print('Please set open files too 10000.. ulimit -Sn 10000')
+            #os.popen("bash -c ulimit -Sn 10000")
             print()
-            #raise SystemExit()
+            raise SystemExit()
             
 
 def GetIPAndHostName():
@@ -143,6 +145,9 @@ def get_address_in_network():
 
 def main():
 
+    astarttime = time.time()
+
+
     OpenFile()
     OpenFileLimit()
     CurDateAndTime()
@@ -150,7 +155,12 @@ def main():
     GetSubNet()
     get_address_in_network()
     CloseFile()
-    
 
+    aendtime = time.time()
+
+    atotaltime = aendtime - astarttime
+    print(0)
+    print("Total time: %f" % atotaltime)
+    print(0)
 
 main()
