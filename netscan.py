@@ -98,9 +98,6 @@ def get_address_in_network():
                     zhost = str(splithost.split("'")[7:8])
                     newzhost = re.sub('[\[\]\']', '', zhost)
 
-                    #print(len(newzhost))
-                    #print(newzhost)
-
                     if len(newzhost) <= 4:
                         Znewzhost = 'NULL'
                     else:
@@ -146,7 +143,6 @@ def get_address_in_network():
 def main():
 
     astarttime = time.time()
-
 
     OpenFile()
     OpenFileLimit()
