@@ -22,7 +22,6 @@ def OpenFileLimit():
     ulimitmax = subprocess.getoutput('ulimit -Sn')
     nulimitmax = int(ulimitmax)
 
-
     if os.name.split()[0] == 'posix':
         if nulimitmax < 10000:
             print()
