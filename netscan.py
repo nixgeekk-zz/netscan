@@ -159,8 +159,8 @@ def main():
     aendtime = time.time()
 
     atotaltime = aendtime - astarttime
-    print(0)
+    print()
     print("Total time: %f" % atotaltime)
-    print(0)
+    print()
 
 main()
