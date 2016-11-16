@@ -17,7 +17,6 @@ def WriteFile(string):
 def CloseFile():
     f.close()
 
-
 def OpenFileLimit():
     
     ulimitmax = subprocess.getoutput('ulimit -Sn')
