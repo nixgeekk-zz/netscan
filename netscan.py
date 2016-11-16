@@ -160,7 +160,7 @@ def main():
 
     atotaltime = aendtime - astarttime
     print()
-    print("Total time: %f" % atotaltime)
+    print("Total time: %f seconds" % atotaltime)
     print()
 
 main()
