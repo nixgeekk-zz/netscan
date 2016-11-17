@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import socket, time, os, netifaces, netaddr, nmap, pprint, re, subprocess, logging, argparse
+import socket, time, os, netifaces, netaddr, nmap, pprint, re, subprocess, logging, argparse, resource
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 from netaddr import *
 from portscan import TCP_connect, scan_ports
@@ -21,14 +21,22 @@ def OpenFileLimit():
     
     ulimitmax = subprocess.getoutput('ulimit -Sn')
     nulimitmax = int(ulimitmax)
+    global soft, hard
+    soft, hard = resource.getrlimit(resource.RLIMIT_OFILE)
+    #print(soft,hard)
+
+
 
     if os.name.split()[0] == 'posix':
         if nulimitmax < 10000:
             print()
-            print('Please set open files too 10000.. ulimit -Sn 10000')
+            print("Setting Open Files limit to 10000")
+            resource.setrlimit(resource.RLIMIT_OFILE, (10000, hard))
+            #print('Please set open files too 10000.. ulimit -Sn 10000')
             #os.popen("bash -c ulimit -Sn 10000")
+            #print(subprocess.getoutput('ulimit -Sn'))
             print()
-            raise SystemExit()
+            #raise SystemExit()
             
 
 def GetIPAndHostName():
@@ -156,5 +164,8 @@ def main():
     print()
     print("Total time: %f seconds" % atotaltime)
     print()
+    print("reverting Open files to original setting")
+    resource.setrlimit(resource.RLIMIT_OFILE, (soft, hard))
+    #print(subprocess.getoutput('ulimit -Sn'))
 
 main()
