@@ -162,8 +162,9 @@ def main():
     print()
     print("Total time: %f seconds" % atotaltime)
     print()
-    print("reverting Open files to original setting %d" % soft)
-    resource.setrlimit(resource.RLIMIT_OFILE, (soft, hard))
+    if soft == 10000:
+        print("reverting Open files to original setting %d" % soft)
+        resource.setrlimit(resource.RLIMIT_OFILE, (soft, hard))
     #print(subprocess.getoutput('ulimit -Sn'))
 
 main()
