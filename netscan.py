@@ -24,6 +24,7 @@ def OpenFileLimit():
     global soft, hard
     soft, hard = resource.getrlimit(resource.RLIMIT_OFILE)
     #print(soft,hard)
+    print(nulimitmax)
 
     if os.name.split()[0] == 'posix':
         if nulimitmax < 10000:
