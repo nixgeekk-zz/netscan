@@ -90,7 +90,7 @@ def get_address_in_network():
             totaltime = endtime - starttime
             n = 0
             print('-------------------------------------------------------------------------------')
-            print('Hostname   ::  IP Address  ::    Mac    ::     Vendor')
+            print('Hostname/FQDN   ::  IP Address  ::    Mac    ::     Vendor')
             print('-------------------------------------------------------------------------------')
             print()
             for k,v in a['scan'].items():
