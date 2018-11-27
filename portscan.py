@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 # This script runs on Python 3
-import socket, threading
+import socket
+import threading
 from datetime import datetime
-from queue import Queue
+#from queue import Queue
+
 
 def TCP_connect(ip, port_number, delay, output):
     TCPsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -46,7 +48,6 @@ def scan_ports(host_ip, delay):
             count += 1
 #            return(str(i) + ': ' + str(output[i]) + '\n')
 
-
     print()            
     print('Count of ports open: %s - %s' % (count, str(host_ip)))
 
@@ -57,7 +58,7 @@ def scan_ports(host_ip, delay):
     total = t2 - t1
 
     # Printing the information to screen
-    print('Port Scanning Completed in: ' , (total))
+    print('Port Scanning Completed in: ', total)
     print()
 
 def main():
